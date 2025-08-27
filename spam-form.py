@@ -1,11 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import os 
+import dotenv
 from selenium.webdriver.chrome.service import Service
 import time
 from selenium.webdriver.common.by import By
 from datetime import datetime, timedelta
+dotenv.load_dotenv()
 bubble_name_str = input("Enter bubble name: ")
 lunch_num_str = input("Enter lunch number (1 or 2): ")
 lunch_num = int(lunch_num_str)
@@ -52,8 +54,8 @@ elif date_mode == "2":
 else:
     print("Invalid mode selection")
     exit()
-mail="ps20245058@student.vsa.edu.hk"
-pw="Ni926666"
+mail = os.getenv("MAIL")
+pw = os.getenv("PW")
 service = Service(executable_path="/Users/henrynitrogen/hi/py/chromedriver")
 driver = webdriver.Chrome(service=service)
 driver.get("https://docs.google.com/forms/d/e/1FAIpQLSfYKdUSjYDq9XNQQcoRSm6SUA9B_4t3i11vafdeNpdIypJ0rA/viewform")
